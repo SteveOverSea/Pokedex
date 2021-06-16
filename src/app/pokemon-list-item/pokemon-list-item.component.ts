@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-pokemon',
-  templateUrl: './pokemon.component.html',
-  styleUrls: ['./pokemon.component.scss']
+  selector: 'app-pokemon-list-item',
+  templateUrl: './pokemon-list-item.component.html',
+  styleUrls: ['./pokemon-list-item.component.scss']
 })
-export class PokemonComponent implements OnInit {
+export class PokemonListItemComponent implements OnInit {
 
   @Input() pokemon: string = "";
   @Input() no: number = 0;
