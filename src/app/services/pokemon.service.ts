@@ -12,8 +12,13 @@ import { PokeEvolution } from '../types/PokeEvolution';
 export class PokemonService {
 
   baseUrl: string = "https://pokeapi.co/api/v2";
+  spriteBaseUrl: string = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
 
   constructor(private http: HttpClient) { }
+
+  getSpriteUrl(no: number): string {
+    return `${this.spriteBaseUrl}${no}.png`;
+  }
 
   getAllPokemon(): Observable<string> {
     const url: string = `${this.baseUrl}/pokedex/1`;
@@ -80,7 +85,11 @@ export class PokemonService {
     let pokeEvolution: PokeEvolution = { name: "", id: ""};
 
     pokeEvolution.name = evolution.species.name;
-    pokeEvolution.id = evolution.species.url.substring("https://pokeapi.co/api/v2/pokemon-species/".length);
+
+    // remove species url and the last "/" from url -> results in pokemon id
+    const speciesUrl = evolution.species.url;
+    pokeEvolution.id = speciesUrl
+      .substring("https://pokeapi.co/api/v2/pokemon-species/".length, speciesUrl.length - 1);
 
     collect.push(pokeEvolution);
 

@@ -1,4 +1,5 @@
 <ul>
-    <app-pokemon-list-item *ngFor="let pokemon of $pokemons | async; let i = index" [pokemon]="pokemon" [no]="i+1" >
+    <p *ngIf="!(pokemons$ | async)">Loading...</p>
+    <app-pokemon-list-item *ngFor="let pokemon of pokemons$ | async; let i = index" [pokemon]="pokemon" [no]="i+1" >
     </app-pokemon-list-item>
 </ul>

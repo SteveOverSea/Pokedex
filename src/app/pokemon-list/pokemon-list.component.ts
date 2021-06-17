@@ -9,12 +9,12 @@ import { PokemonService } from '../services/pokemon.service';
 })
 export class PokemonListComponent implements OnInit {
 
-  $pokemons: Observable<string> = new Observable<string>();
+  pokemons$: Observable<string> = new Observable<string>();
 
   constructor(private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
-    this.$pokemons = this.pokemonService.getAllPokemon();
+    this.pokemons$ = this.pokemonService.getAllPokemon();
   }
 
 }

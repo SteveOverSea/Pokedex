@@ -13,11 +13,13 @@ import { Pokemon } from '../types/Pokemon';
 })
 export class PokemonDetailsComponent implements OnInit {
 
+  spriteBaseUrl: string = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
+
   pokeNo: number = -1;
   pokemon$: Observable<Pokemon> = new Observable<Pokemon>();
   pokeData: any = {};
 
-  constructor(private route: ActivatedRoute, private pokemonService: PokemonService) { }
+  constructor(private route: ActivatedRoute, public pokemonService: PokemonService) { }
 
   ngOnInit(): void {
     this.pokeNo = parseInt(this.route.snapshot.params.no);
