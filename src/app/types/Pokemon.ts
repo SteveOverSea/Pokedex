@@ -1,5 +1,6 @@
+import { PokeEvolution } from "./PokeEvolution";
 import { PokeAbility } from "./PokeAbility";
-import { PokeStats } from "./PokeStats";
+import { PokeStat } from "./PokeStats";
 import { PokeType } from "./PokeType";
 
 export interface Pokemon {
@@ -8,7 +9,7 @@ export interface Pokemon {
     abilities: PokeAbility[],
     types: PokeType[],
     orderNumber: number,
-    stats: PokeStats[],
-    possibleEvolutions: string[],
+    stats: PokeStat[],
+    possibleEvolutions: PokeEvolution[],
     moves: string[]
 }

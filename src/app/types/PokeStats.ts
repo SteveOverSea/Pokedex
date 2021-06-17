@@ -1,4 +1,4 @@
-export interface PokeStats {
+export interface PokeStat {
     value: number,
     name: string
 }
