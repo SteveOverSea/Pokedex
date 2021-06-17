@@ -1,7 +1,10 @@
-<p>pokemon-details works! on no. {{ this.pokeNo }}</p>
 <div *ngIf="(pokemon$ | async)?.picture">
     <h2>Picture</h2>
     <img src="{{ (pokemon$ | async)?.picture }}">
+</div>
+<div *ngIf="(pokemon$ | async)?.name">
+    <h2>Name</h2>
+    <p>{{ (pokemon$ | async)?.name }}</p>
 </div>
 <div *ngIf="(pokemon$ | async)?.orderNumber">
     <h2>Order Number</h2>
@@ -29,6 +32,12 @@
     <h2>Moves</h2>
     <ul>
         <li *ngFor="let move of (pokemon$ | async)?.moves">{{ move }}</li>
+    </ul>
+</div>
+<div *ngIf="(pokemon$ | async)?.possibleEvolutions">
+    <h2>Possible Evolutions</h2>
+    <ul>
+        <li *ngFor="let evolution of (pokemon$ | async)?.possibleEvolutions"><a href="/{{ evolution.id }}">{{ evolution.name }}</a></li>
     </ul>
 </div>
 <a routerLink="/">&lt; back</a>
