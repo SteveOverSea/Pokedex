@@ -1,49 +1,53 @@
-<p *ngIf="!(pokemon$ | async)">Loading...</p>
-<div *ngIf="(pokemon$ | async)?.picture">
-    <h2>Picture</h2>
-    <img src="{{ (pokemon$ | async)?.picture }}">
-</div>
+<p *ngIf="!(pokemon$ | async)" class="mx-auto display-4">Loading...</p>
 <div *ngIf="(pokemon$ | async)?.name">
-    <h2>Name</h2>
-    <p>{{ (pokemon$ | async)?.name }}</p>
+    <h2 class="text-capitalize display-4 mx-auto">{{ (pokemon$ | async)?.name }}</h2>
 </div>
 <div *ngIf="(pokemon$ | async)?.orderNumber">
-    <h2>Order Number</h2>
-    <p>{{ (pokemon$ | async)?.orderNumber }}</p>
+    <p class="mx-auto">#{{ (pokemon$ | async)?.orderNumber }}</p>
 </div>
-<div *ngIf="(pokemon$ | async)?.abilities">
-    <h2>Abilities</h2>
-    <ul>
-        <li *ngFor="let ability of (pokemon$ | async)?.abilities">{{ ability }}</li>
-    </ul>
+<div *ngIf="(pokemon$ | async)?.picture">
+    <img src="{{ (pokemon$ | async)?.picture }}" class="mx-auto d-block">
 </div>
-<div *ngIf="(pokemon$ | async)?.types">
-    <h2>Types</h2>
-    <ul>
-        <li *ngFor="let type of (pokemon$ | async)?.types">{{ type }}</li>
-    </ul>
+<div class="container">
+    <div class="row">
+        <div *ngIf="(pokemon$ | async)?.types" class="col">
+            <h2>Types</h2>
+            <ul class="text-capitalize">
+                <li *ngFor="let type of (pokemon$ | async)?.types">{{ type }}</li>
+            </ul>
+        </div>
+        <div *ngIf="(pokemon$ | async)?.stats" class="col">
+            <h2>Stats</h2>
+            <ul class="text-capitalize">
+                <li *ngFor="let stat of (pokemon$ | async)?.stats" class="text-uppercase">{{ stat.name }}: {{ stat.value }}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div *ngIf="(pokemon$ | async)?.moves" class="col">
+            <h2>Moves</h2>
+            <ul class="text-capitalize d-flex flex-row flex-wrap justify-content-start">
+                <li *ngFor="let move of (pokemon$ | async)?.moves" class="mx-3">{{ move }}</li>
+            </ul>
+        </div>
+        <div *ngIf="(pokemon$ | async)?.abilities" class="col">
+            <h2>Abilities</h2>
+            <ul class="text-capitalize">
+                <li *ngFor="let ability of (pokemon$ | async)?.abilities">{{ ability }}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div *ngIf="(pokemon$ | async)?.possibleEvolutions" class="mx-auto">
+            <h2>Possible Evolutions</h2>
+            <ul class="d-flex flex-row list-unstyled text-capitalize">
+                <li *ngFor="let evolution of (pokemon$ | async)?.possibleEvolutions">
+                    <a href="/{{ evolution.id }}" class="d-flex flex-column align-items-center p-1">
+                        <img src="{{ this.pokemonService.spriteBaseUrl + evolution.id}}.png">
+                        <p>{{ evolution.name }}</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
-<div *ngIf="(pokemon$ | async)?.stats">
-    <h2>Stats</h2>
-    <ul>
-        <li *ngFor="let stat of (pokemon$ | async)?.stats">{{ stat.name }}: {{ stat.value }}</li>
-    </ul>
-</div>
-<div *ngIf="(pokemon$ | async)?.moves">
-    <h2>Moves</h2>
-    <ul>
-        <li *ngFor="let move of (pokemon$ | async)?.moves">{{ move }}</li>
-    </ul>
-</div>
-<div *ngIf="(pokemon$ | async)?.possibleEvolutions">
-    <h2>Possible Evolutions</h2>
-    <ul>
-        <li *ngFor="let evolution of (pokemon$ | async)?.possibleEvolutions">
-            <a href="/{{ evolution.id }}">
-                <img src="{{ this.pokemonService.spriteBaseUrl + evolution.id}}.png">
-                <p>{{ evolution.name }}</p>
-            </a>
-        </li>
-    </ul>
-</div>
-<a routerLink="/">&lt; back</a>

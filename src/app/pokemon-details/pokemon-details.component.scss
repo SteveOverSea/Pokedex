@@ -1,0 +1,8 @@
+div > img {
+    height: auto;
+    width: clamp(100px, 33%, 300px);
+}
+
+h2, p {
+    width: fit-content;
+}
