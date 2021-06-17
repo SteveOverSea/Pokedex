@@ -13,8 +13,6 @@ import { Pokemon } from '../types/Pokemon';
 })
 export class PokemonDetailsComponent implements OnInit {
 
-  spriteBaseUrl: string = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
-
   pokeNo: number = -1;
   pokemon$: Observable<Pokemon> = new Observable<Pokemon>();
   pokeData: any = {};
