@@ -1,2 +1,34 @@
-<p>pokemon-details works! on no. {{ (this.$pokeNo | async) }}</p>
+<p>pokemon-details works! on no. {{ this.pokeNo }}</p>
+<div *ngIf="(pokemon$ | async)?.picture">
+    <h2>Picture</h2>
+    <img src="{{ (pokemon$ | async)?.picture }}">
+</div>
+<div *ngIf="(pokemon$ | async)?.orderNumber">
+    <h2>Order Number</h2>
+    <p>{{ (pokemon$ | async)?.orderNumber }}</p>
+</div>
+<div *ngIf="(pokemon$ | async)?.abilities">
+    <h2>Abilities</h2>
+    <ul>
+        <li *ngFor="let ability of (pokemon$ | async)?.abilities">{{ ability }}</li>
+    </ul>
+</div>
+<div *ngIf="(pokemon$ | async)?.types">
+    <h2>Types</h2>
+    <ul>
+        <li *ngFor="let type of (pokemon$ | async)?.types">{{ type }}</li>
+    </ul>
+</div>
+<div *ngIf="(pokemon$ | async)?.stats">
+    <h2>Stats</h2>
+    <ul>
+        <li *ngFor="let stat of (pokemon$ | async)?.stats">{{ stat.name }}: {{ stat.value }}</li>
+    </ul>
+</div>
+<div *ngIf="(pokemon$ | async)?.moves">
+    <h2>Moves</h2>
+    <ul>
+        <li *ngFor="let move of (pokemon$ | async)?.moves">{{ move }}</li>
+    </ul>
+</div>
 <a routerLink="/">&lt; back</a>

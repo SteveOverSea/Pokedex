@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+
+import { PokemonService } from '../services/pokemon.service';
+
+import { Pokemon } from '../types/Pokemon';
 
 @Component({
   selector: 'app-pokemon-details',
@@ -10,12 +13,18 @@ import { map } from 'rxjs/operators';
 })
 export class PokemonDetailsComponent implements OnInit {
 
-  $pokeNo: Observable<number> = new Observable<number>();
+  pokeNo: number = -1;
+  pokemon$: Observable<Pokemon> = new Observable<Pokemon>();
+  pokeData: any = {};
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
-    this.$pokeNo = this.route.params.pipe(map(( param: any ) => param.no ));
+    this.pokeNo = parseInt(this.route.snapshot.params.no);
+    this.pokemon$ = this.pokemonService.getPokemonDetails(this.pokeNo);
+    this.pokemon$.subscribe(pokeData => { 
+      console.log(pokeData);
+    });
   }
 
 }
