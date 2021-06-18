@@ -15,6 +15,16 @@ Angular-Frontend using [PokeAPI](https://pokeapi.co).
   - Moves
   - Possible Evolutions
 
+### Install
+
+Make sure to have angular-cli installed.
+
+1. Download the repo
+2. ```cd``` into directory
+3. ```npm install```
+4. ```ng serve```
+5. Project is running on ```localhost:4200```
+
 ### Technologies
 
 - Angular
