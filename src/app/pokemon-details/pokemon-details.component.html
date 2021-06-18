@@ -12,14 +12,14 @@
     <div class="row">
         <div *ngIf="(pokemon$ | async)?.types" class="col">
             <h2>Types</h2>
-            <ul class="text-capitalize">
+            <ul class="text-capitalize list-unstyled">
                 <li *ngFor="let type of (pokemon$ | async)?.types">{{ type }}</li>
             </ul>
         </div>
         <div *ngIf="(pokemon$ | async)?.stats" class="col">
             <h2>Stats</h2>
-            <ul class="text-capitalize">
-                <li *ngFor="let stat of (pokemon$ | async)?.stats" class="text-uppercase">{{ stat.name }}: {{ stat.value }}</li>
+            <ul class="text-capitalize list-unstyled">
+                <li *ngFor="let stat of (pokemon$ | async)?.stats" class="text-uppercase"><span class="font-weight-lighter">{{ stat.name }}</span>: {{ stat.value }}</li>
             </ul>
         </div>
     </div>
@@ -39,8 +39,8 @@
     </div>
     <div class="row">
         <div *ngIf="(pokemon$ | async)?.possibleEvolutions" class="mx-auto">
-            <h2>Possible Evolutions</h2>
-            <ul class="d-flex flex-row list-unstyled text-capitalize">
+            <h2 class="mx-auto">Possible Evolutions</h2>
+            <ul class="d-flex flex-row list-unstyled text-capitalize justify-content-center">
                 <li *ngFor="let evolution of (pokemon$ | async)?.possibleEvolutions">
                     <a href="/{{ evolution.id }}" class="d-flex flex-column align-items-center p-1">
                         <img src="{{ this.pokemonService.spriteBaseUrl + evolution.id}}.png">
