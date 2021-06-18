@@ -13,18 +13,14 @@ import { Pokemon } from '../types/Pokemon';
 })
 export class PokemonDetailsComponent implements OnInit {
 
-  pokeNo: number = -1;
   pokemon$: Observable<Pokemon> = new Observable<Pokemon>();
-  pokeData: any = {};
+  pokeData: Pokemon = new Pokemon();
 
   constructor(private route: ActivatedRoute, public pokemonService: PokemonService) { }
 
   ngOnInit(): void {
-    this.pokeNo = parseInt(this.route.snapshot.params.no);
-    this.pokemon$ = this.pokemonService.getPokemonDetails(this.pokeNo);
-    this.pokemon$.subscribe(pokeData => { 
-      console.log(pokeData);
-    });
+    this.pokeData.orderNumber = parseInt(this.route.snapshot.params.no);
+    this.pokemon$ = this.pokemonService.getPokemonDetails(this.pokeData.orderNumber);
   }
 
 }

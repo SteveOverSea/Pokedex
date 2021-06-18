@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, mapTo, mergeMap, switchMap, take, toArray } from 'rxjs/operators';
+import { map, mergeMap} from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 import { Pokemon } from "../types/Pokemon";
 import { PokeEvolution } from '../types/PokeEvolution';
+import { IPokeData } from '../types/IPokeData';
+import { IEvolutionData } from '../types/IEvolutionData';
+import { IEvolutionChain } from '../types/IEvolutionChain';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +26,7 @@ export class PokemonService {
   getAllPokemon(): Observable<string> {
     const url: string = `${this.baseUrl}/pokedex/1`;
 
+    // map response to return array of pokemon names
     return this.http.get(url)
       .pipe(
           map(( data: any ) => data.pokemon_entries
@@ -34,6 +38,8 @@ export class PokemonService {
   getPokemonDetails(no: number): Observable<Pokemon> {
     const url: string = `${this.baseUrl}/pokemon/${no}`;
 
+    // merge pokemon data with evolution data from species data
+    // and return mapped object with pokemon data and evolution data
     return this.http.get(url)
       .pipe(
         mergeMap(( pokeData: any ) => {
@@ -52,9 +58,10 @@ export class PokemonService {
       );
   }
 
-  refactorPokemonDetails( data: any ): Pokemon {
+  refactorPokemonDetails( data: IPokeData ): Pokemon {
     const pokeData = data.pokeData;
     const evolutionData = data.evolutionData;
+
     return {
       picture: pokeData.sprites.front_default,
       name: pokeData.name,
@@ -72,16 +79,13 @@ export class PokemonService {
     }
   }
 
-  static refactorEvolutionChain( data: any ): PokeEvolution[] {
-    let evolution: PokeEvolution[] = [];
-
-    
+  static refactorEvolutionChain( data: IEvolutionChain ): PokeEvolution[] {
+    let evolution: PokeEvolution[] = [];  
     PokemonService.collectEvolutions(evolution, data);
-  
     return evolution;
   }
 
-  static collectEvolutions(collect: PokeEvolution[], evolution: any) {
+  static collectEvolutions(collect: PokeEvolution[], evolution: IEvolutionChain) {
     let pokeEvolution: PokeEvolution = { name: "", id: ""};
 
     pokeEvolution.name = evolution.species.name;
