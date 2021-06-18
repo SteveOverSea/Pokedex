@@ -23,7 +23,7 @@ export class PokemonService {
     return `${this.spriteBaseUrl}${no}.png`;
   }
 
-  getAllPokemon(): Observable<string> {
+  getAllPokemon(): Observable<string[]> {
     const url: string = `${this.baseUrl}/pokedex/1`;
 
     // map response to return array of pokemon names
@@ -74,12 +74,12 @@ export class PokemonService {
           value: stat.base_stat
         }
       }),
-      possibleEvolutions: PokemonService.refactorEvolutionChain(evolutionData.chain),
+      possibleEvolutions: PokemonService.collectEvolutionChain(evolutionData.chain),
       moves: pokeData.moves.map(( move: any ) => move.move.name)
     }
   }
 
-  static refactorEvolutionChain( data: IEvolutionChain ): PokeEvolution[] {
+  static collectEvolutionChain( data: IEvolutionChain ): PokeEvolution[] {
     let evolution: PokeEvolution[] = [];  
     PokemonService.collectEvolutions(evolution, data);
     return evolution;
