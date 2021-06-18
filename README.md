@@ -25,6 +25,26 @@ Make sure to have angular-cli installed.
 4. ```ng serve```
 5. Project is running on ```localhost:4200```
 
+### Screenshots
+
+**Start Page**
+
+[![Start Page](https://i.postimg.cc/fWrfKkcz/Screenshot-2021-06-18-at-10-22-12.png)](https://postimg.cc/pyKjVWc4)
+
+**Detail View**
+
+1
+
+[![Detail View 1](https://i.postimg.cc/J0Gc8WLC/Screenshot-2021-06-18-at-10-22-24.png)](https://postimg.cc/1V1N02Xv)
+
+2
+
+[![Detail View 2](https://i.postimg.cc/wTRcbH2h/Screenshot-2021-06-18-at-10-22-39.png)](https://postimg.cc/nCZDCy6z)
+
+3
+
+[![Detail View 3](https://i.postimg.cc/4yqvNFf7/Screenshot-2021-06-18-at-10-22-45.png)](https://postimg.cc/vx7x0h6b)
+
 ### Technologies
 
 - Angular
