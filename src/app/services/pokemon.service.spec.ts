@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from "@angular/common/http/testing";
 
 import { PokemonService } from './pokemon.service';
 import { HttpClientModule } from '@angular/common/http';

@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 import { Pokemon } from "../types/Pokemon";
 import { PokeEvolution } from '../types/PokeEvolution';
 import { IPokeData } from '../types/IPokeData';
-import { IEvolutionData } from '../types/IEvolutionData';
 import { IEvolutionChain } from '../types/IEvolutionChain';
 
 @Injectable({

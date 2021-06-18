@@ -1,27 +1,41 @@
-# PokeFrontend
+# Pokedex
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.2.
+Angular-Frontend using [PokeAPI](https://pokeapi.co).
 
-## Development server
+### Functionality
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Shows a list of all pokemon with sprites
+- When clicked, opens detail page to show
+  - Name
+  - Ordernumber
+  - Picture
+  - Types
+  - Stats
+  - Abilities
+  - Moves
+  - Possible Evolutions
 
-## Code scaffolding
+### Technologies
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Angular
+- Bootstrap
 
-## Build
+## Learning Experiences
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Total workload: 9 hours
 
-## Running unit tests
+I learned more about pipe operators from RxJS and how to use them. For example, mergeMap to combine data from different Observables (used to get all necessary pokemon details).
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+On the testing side, I am begin to understand more and more what Angular needs to make the tests running, like importing the right HttpClientModule to get Observables from HttpClient running.
 
-## Running end-to-end tests
+## Possible Extensions
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Not loading all the pokemons at once, but  a smaller patch and re-loading f.e. on scrolling, to improve user experience
 
-## Further help
+- Making more links to related data from the PokeAPI
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Restrict possible evolutions to start not from base-form but from selected evolution stage
+
+
+
+
