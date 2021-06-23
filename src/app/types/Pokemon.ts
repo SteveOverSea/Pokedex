@@ -1,5 +1,5 @@
 import { PokeEvolution } from "./PokeEvolution";
-import { PokeStat } from "./PokeStats";
+import { IPokeStat } from "./IPokeStats";
 
 export class Pokemon {
     picture: string
@@ -7,7 +7,7 @@ export class Pokemon {
     abilities: string[]
     types: string[]
     orderNumber: number
-    stats: PokeStat[]
+    stats: IPokeStat[]
     possibleEvolutions: PokeEvolution[]
     moves: string[]
 
